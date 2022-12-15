@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ------------------------------------------------------------------------------------------
 For executables, see "dist" folder.
 
-2022-12-14 New major release from @MaxNad
+2022-12-14 New major release from [@MaxNad](https://github.com/MaxNad)
 
 The new, major release introduces a number of changes:
 - Build system was converted to maven and all dependencies were updated

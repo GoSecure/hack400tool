@@ -1,4 +1,4 @@
-# hack400tool - security handling tools for IBM Power Systems (formerly known as AS/400)
+# hack400tool - security handling tools for IBM i (formerly known as IBM Power Systems formerly known as AS/400)
 # Copyright (C) 2010-2017  Bart Kulach
 
 "hack400tool" is free software: you can redistribute it and/or modify
@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ------------------------------------------------------------------------------------------
-For executables, see "dist" folder.
+For executables, use the `mvn clean compile assembly:single` command and check in the respective `target` folders.
 
 2022-12-14 New major release from [@MaxNad](https://github.com/MaxNad)
 

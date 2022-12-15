@@ -17,6 +17,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ------------------------------------------------------------------------------------------
 For executables, see "dist" folder.
 
+2022-12-14 New major release from @MaxNad
+
+The new, major release introduces a number of changes:
+- Build system was converted to maven and all dependencies were updated
+- Fixed multiple issues with type casting
+- Fixed multiple issues with concurent thread access on Swing components
+- Included a new feature to dump all user hashes
+- Update the scanner database at start to ensure it is always up to date
+- Fixed errors when recoving empty files
+- Added safeguards to avoid deleting system libraries
+
 2017-07-21 New major release
 
 The new, major release introduces a number of changes:

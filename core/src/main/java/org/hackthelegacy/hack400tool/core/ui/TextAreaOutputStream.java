@@ -28,55 +28,56 @@ import javax.swing.SwingUtilities;
 
 public class TextAreaOutputStream extends OutputStream {
 
-   private final JTextArea textArea;
-   private final StringBuilder sb = new StringBuilder();
-   private String title;
-   private FileOutputStream fileOutStream;
+	private final JTextArea textArea;
+	private final StringBuilder sb = new StringBuilder();
+	private String title;
+	private FileOutputStream fileOutStream;
 
-   public TextAreaOutputStream(final JTextArea textArea, String title, String fileName) throws FileNotFoundException, IOException {
-      this.textArea = textArea;
-      this.title = title;
-      File outFile = new File(fileName);
-      if (!outFile.exists()) {
-          outFile.getParentFile().mkdirs();
-          outFile.createNewFile();
-      }
-      fileOutStream = new FileOutputStream(fileName);
-      if (!title.isEmpty())
-        sb.append(title + "> ");      
-   }
+	public TextAreaOutputStream(final JTextArea textArea, String title, String fileName)
+			throws FileNotFoundException, IOException {
+		this.textArea = textArea;
+		this.title = title;
+		File outFile = new File(fileName);
+		if (!outFile.exists()) {
+			outFile.getParentFile().mkdirs();
+			outFile.createNewFile();
+		}
+		fileOutStream = new FileOutputStream(fileName);
+		if (!title.isEmpty())
+			sb.append(title + "> ");
+	}
 
-   @Override
-   public void flush() {
-   }
+	@Override
+	public void flush() {
+	}
 
-   @Override
-   public void close() throws IOException {
-    fileOutStream.close();
-   }
+	@Override
+	public void close() throws IOException {
+		fileOutStream.close();
+	}
 
-   @Override
-   public void write(int b) throws IOException {
+	@Override
+	public void write(int b) throws IOException {
 
-      if (b == '\r')
-         return;
+		if (b == '\r')
+			return;
 
-      fileOutStream.write(b);      
-      
-      if (b == '\n') {
-         final String text = sb.toString() + "\n";
-         SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-               textArea.append(text);
-            }
-         });
-         sb.setLength(0);
-         if (!title.isEmpty())
-             sb.append(title + "> ");
+		fileOutStream.write(b);
 
-         return;
-      }
+		if (b == '\n') {
+			final String text = sb.toString() + "\n";
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					textArea.append(text);
+				}
+			});
+			sb.setLength(0);
+			if (!title.isEmpty())
+				sb.append(title + "> ");
 
-      sb.append((char) b);      
-   }
+			return;
+		}
+
+		sb.append((char) b);
+	}
 }
